@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, get_user_model, logout
@@ -6,6 +7,14 @@ from django.contrib.auth import authenticate, login, get_user_model, logout
 from datetime import datetime
 from .models import Post, Meetup, Page, Contact, Category
 from .forms import ContactForm, CommentForm, SignupForm
+=======
+from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
+
+from datetime import datetime
+from .models import Post, Meetup, Page, Contact, Category
+from .forms import ContactForm, CommentForm
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
 
 
 def get_meetup():
@@ -110,6 +119,7 @@ class ContactView(TemplateView):
         return context
 
 
+<<<<<<< HEAD
 
 class SignupView(TemplateView):
     signup_form = SignupForm
@@ -118,11 +128,20 @@ class SignupView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SignupView, self).get_context_data(**kwargs)
         context['title'] = 'Sign Up'
+=======
+class LoginView(TemplateView):
+    template_name = "account/login.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(LoginView, self).get_context_data(**kwargs)
+        context['title'] = 'Log in'
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
         context['categories'] = get_category()
         context['meetups'] = get_meetup()
         context['year'] = datetime.now().year
         return context
 
+<<<<<<< HEAD
     def get(self, request):
         form = self.signup_form(None)
         return render(request, self.template_name, {'form': form})
@@ -161,16 +180,28 @@ class LoginView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(LoginView, self).get_context_data(**kwargs)
         context['title'] = 'Log in'
+=======
+
+class SignupView(TemplateView):
+    template_name = "account/signup.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(SignupView, self).get_context_data(**kwargs)
+        context['title'] = 'Sign Up'
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
         context['categories'] = get_category()
         context['meetups'] = get_meetup()
         context['year'] = datetime.now().year
         return context
 
 
+<<<<<<< HEAD
 #using django built in log in.....l kept this in case you want to use it
 
 
 
+=======
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
 class LogoutView(TemplateView):
     template_name = "account/logout.html"
 
@@ -180,4 +211,8 @@ class LogoutView(TemplateView):
         context['categories'] = get_category()
         context['meetups'] = get_meetup()
         context['year'] = datetime.now().year
+<<<<<<< HEAD
         return context     '''
+=======
+        return context
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2

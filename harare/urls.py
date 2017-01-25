@@ -29,6 +29,10 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)/$', views.PostDetailView.as_view(), name='post_detail'),
     url(r'contact', views.ContactView.as_view(), name='contact'),
     url(r'^login/$', auth_views.login, name='login'),
+<<<<<<< HEAD
     url(r'^logout/$', auth_views.logout, {'next_page': '/login'}, name='logout'),
+=======
+    url(r'^logout/$', auth_views.logout, name='logout'),
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
     url(r'signup', views.SignupView.as_view(), name='signup'),
 ]

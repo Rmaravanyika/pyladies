@@ -73,8 +73,11 @@ TEMPLATES = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = 'home'
 
+=======
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
 WSGI_APPLICATION = 'harare.wsgi.application'
 
 

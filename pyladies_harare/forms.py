@@ -5,7 +5,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm, UserCreationForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+<<<<<<< HEAD
 from crispy_forms.bootstrap import FormActions
+=======
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
 
 from .models import Contact, Comment
 
@@ -42,6 +45,7 @@ class LoginForm(AuthenticationForm):
         self.helper.add_input(Submit('login', 'Log in'))
 
 
+<<<<<<< HEAD
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -60,6 +64,8 @@ class SignupForm(forms.ModelForm):
         self.helper.add_input(Submit('signup', 'sign up'))
 
 
+=======
+>>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
