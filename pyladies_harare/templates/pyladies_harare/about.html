@@ -1,0 +1,12 @@
+{% extends 'pyladies_harare/base.html' %}
+
+{% block content %}
+
+{% for page in pages %}
+       <div>
+         <h2><a href="#">{{ page.title }}</a></h2>
+         <p>{{ page.text|linebreaks }} </p> </div>
+         <br />
+       {% endfor %}
+
+{% endblock %}

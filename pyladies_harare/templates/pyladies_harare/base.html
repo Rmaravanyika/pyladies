@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ title }} - PyLadies Harare</title>
+    {% load staticfiles %}
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'pyladies_harare/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'pyladies_harare/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'pyladies_harare/css/blog-home.css' %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#">
+                    <img src="{% static 'pyladies_harare/img/pyladieshre.jpg' %}" width="120" height="120" /> </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <div class = "dropdown"><button class="dropbtn">
+                        <a href="{% url 'home' %}">Home</a></button>
+                </div>
+                <div class = "dropdown"><button class="dropbtn">
+                        <a href="{% url 'about' %}">About</a></button>
+                </div>
+                <div class = "dropdown"><button class="dropbtn">
+                    <a href="#"> Meetups</a></button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'meetups' %}">Our Meetups</a>
+                        <a href="{% url 'upcoming' %}">Upcoming Meetups</a>
+                        <a href="{% url 'past' %}">Past Meetups</a>
+                    </div>
+                </div>
+                <div class = "dropdown"><button class="dropbtn">
+                    <a href="#">Talks</a></button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'past' %}">Topics</a>
+                        <a href="{% url 'past' %}">Submit Talk</a>
+                        <a href="{% url 'past' %}">Propose Talk</a>
+                    </div>
+                </div>
+                <div class = "dropdown"><button class="dropbtn">
+                    <a href="#">Code of Conduct</a>
+                    </button>
+                </div>
+                <div class = "dropdown"><button class="dropbtn">
+                    <a href="{% url 'contact' %}">Contact</a>
+                    </button>
+                </div>
+                {% if user.is_authenticated %}
+                <div class = "dropdown"><button class="dropbtn">Hello {{ user.username }}!</button>
+                    <div class="dropdown-content">
+                        <a href="">Profile</a>
+                        <a href="/logout">Log off</a>
+                    </div>
+                </div>
+
+                {% else %}
+
+                <div class = "dropdown"><button class="dropbtn">Log in</button>
+                    <div class="dropdown-content">
+                        <a href="{% url 'login' %}">Log in</a></li>
+                        <a href="{% url 'signup' %}">Sign up</a></li>
+                    </div>
+                </div>
+
+                {% endif %}
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+              {% block content %}
+
+              {% endblock %}
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                <h4>Blog Categories</h4>
+                <div class="row">
+                <div class="col-lg-6">
+                {% for category in categories %}
+		            <a href="#">{{ category.category }}</a>
+				        {% endfor %}
+                </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4><a href="{% url 'upcoming' %}">Upcoming Meetups</a></h4>
+                    {% for meetup in meetups %}
+                    <h4>{{ meetup.name }} </h4>
+                    <p><strong>Location:</strong> {{ meetup.location }} </p>
+                    <p><strong>Date:</strong> {{ meetup.fromdate }} -  {{ meetup.todate }}</p>
+                    <p><strong>Website:</strong> <a href="">{{ meetup.website }}</a></p>
+                    <br />
+                  {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; PyLadies Harare {{ year }}</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{% static 'pyladies_harare/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'pyladies_harare/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

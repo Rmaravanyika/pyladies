@@ -1,0 +1,30 @@
+{% extends "pyladies_harare/base.html" %}
+
+{% block content %}
+  <div class="row">
+        <div class="col-md-8">
+          <div> <h1> {{ post.title }}</h1>
+              <br />
+            </div>
+          <p>published: {{ post.published_date }} </p>
+
+        <p>{{ post.text }} </p>
+        <br />
+
+      <br />
+
+      <hr>
+
+          <div>
+            <h2> Your comments</h2>
+          </div>
+          {% load crispy_forms_tags %}
+          {% crispy comment_form comment_form.helper %}
+           <form action="#" method=post>
+            {% csrf_token %}
+            {{ form }}
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

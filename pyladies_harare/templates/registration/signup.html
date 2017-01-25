@@ -1,0 +1,15 @@
+{% extends 'pyladies_harare/base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h2>{{ title }}</h2>
+    <div class="col-md-8">
+        <h3>Sign Up below:</h3>
+        <br />
+
+        {% crispy form %}
+
+    </div>
+
+  </div>
+{% endblock %}
