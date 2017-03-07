@@ -80,11 +80,8 @@
                 <div class = "dropdown"><button class="dropbtn">Hello {{ user.username }}!</button>
                     <div class="dropdown-content">
                         <a href="">Profile</a>
-<<<<<<< HEAD
                         <a href="/logout">Log off</a>
-=======
                         <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
->>>>>>> 98cea01602e7e33d2f135a2914e9d707cba3c5a2
                     </div>
                 </div>
 
@@ -92,8 +89,8 @@
 
                 <div class = "dropdown"><button class="dropbtn">Log in</button>
                     <div class="dropdown-content">
-                        <a href="{% url 'login' %}">Log in</a></li>
-                        <a href="{% url 'signup' %}">Sign up</a></li>
+                        <li><a href="{% url 'login' %}">Log in</a></li>
+                        <li><a href="{% url 'signup' %}">Sign up</a></li>
                     </div>
                 </div>
 
